@@ -25,5 +25,8 @@ public class SalarioPessoa {
     private float salarioBase;
     private float salarioLiquido;
     private int qtdDependente;
+    private int horasMes;
+    private float percentual;
+    private float qtdeHoraExtra;
 
 }

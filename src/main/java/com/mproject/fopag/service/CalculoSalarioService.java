@@ -2,8 +2,11 @@ package com.mproject.fopag.service;
 
 public class CalculoSalarioService {
 
+    public float valorTotalHoraExtra;
+
     public float retornaDescontoInss(float salarioBase) {
         float descontoInss;
+        salarioBase = salarioBase + valorTotalHoraExtra;
         if (salarioBase <= 1302.00){
             descontoInss = salarioBase*0.075f;
         } else if (salarioBase > 1302.00 && salarioBase <= 2571.29){
@@ -22,6 +25,7 @@ public class CalculoSalarioService {
     public float retornaDescontoIrrf(float salarioBase, int qtdDependentes) {
         float descontoIrrfTotal = 0;
         float descontoDependente = 189.59f;
+        salarioBase = salarioBase + valorTotalHoraExtra;
         float descontoBaseIrrf = salarioBase - (descontoDependente*qtdDependentes) - retornaDescontoInss(salarioBase);
 
         if(descontoBaseIrrf < 212.00){
@@ -40,15 +44,22 @@ public class CalculoSalarioService {
     }
 
     public float retornaFgtsEmpregado(float salarioBase) {
+        salarioBase = salarioBase + valorTotalHoraExtra;
         return salarioBase*0.08f;
     }
 
     public float retornaFgtsGoverno(float salarioBase) {
+        salarioBase = salarioBase + valorTotalHoraExtra;
         return salarioBase*0.005f;
     }
 
     public float retornaSalarioLiquido(float salarioBase, int qtdDependente){
+        salarioBase = salarioBase + valorTotalHoraExtra;
         return salarioBase - (retornaDescontoInss(salarioBase) + retornaDescontoIrrf(salarioBase, qtdDependente));
+    }
+    public float retornaHoraExtra(float salarioBase, int horasMes, float percentual, float qtdeHoraExtra){
+        valorTotalHoraExtra = ((salarioBase / horasMes) * percentual) * qtdeHoraExtra;
+        return valorTotalHoraExtra;
     }
 
 

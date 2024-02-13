@@ -25,8 +25,19 @@ public class CadastroMain {
         System.out.println("Quantidade de Dependentes: ");
         salarioPessoa.setQtdDependente(scanner.nextInt());
 
+        System.out.println("Quantidade de horas mês: ");
+        salarioPessoa.setHorasMes(scanner.nextInt());
+
+        System.out.println("Quantidade de horas extras 1: ");
+        salarioPessoa.setQtdeHoraExtra(scanner.nextFloat());
+
+        System.out.println("Percentual Hora Extra 1: ");
+        salarioPessoa.setPercentual(scanner.nextFloat());
+
         System.out.println("=====================================================");
 
+        System.out.println("Valor Extra 1");
+        System.out.println(calculoSalarioService.retornaHoraExtra(salarioPessoa.getSalarioBase(), salarioPessoa.getHorasMes(), salarioPessoa.getPercentual(), salarioPessoa.getQtdeHoraExtra()));
         System.out.println("Desconto INSS");
         System.out.println(calculoSalarioService.retornaDescontoInss(salarioPessoa.getSalarioBase()));
         System.out.println("Desconto IRRF");
