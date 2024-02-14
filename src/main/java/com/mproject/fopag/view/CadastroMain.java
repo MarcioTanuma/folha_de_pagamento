@@ -13,6 +13,8 @@ public class CadastroMain {
 
         Scanner scanner = new Scanner(System.in);
 
+        System.out.println("===== INFORMAÇÕES CADASTRAIS PARA CÁLCULO =====");
+
         System.out.println("Digite o Nome: ");
         salarioPessoa.setNome(scanner.nextLine());
 
@@ -34,20 +36,23 @@ public class CadastroMain {
         System.out.println("Percentual Hora Extra 1: ");
         salarioPessoa.setPercentual(scanner.nextFloat());
 
-        System.out.println("=====================================================");
+        System.out.println("============== P R O V E N T O S ================");
 
-        System.out.println("Valor Extra 1");
-        System.out.println(calculoSalarioService.retornaHoraExtra(salarioPessoa.getSalarioBase(), salarioPessoa.getHorasMes(), salarioPessoa.getPercentual(), salarioPessoa.getQtdeHoraExtra()));
-        System.out.println("Desconto INSS");
-        System.out.println(calculoSalarioService.retornaDescontoInss(salarioPessoa.getSalarioBase()));
-        System.out.println("Desconto IRRF");
-        System.out.println(calculoSalarioService.retornaDescontoIrrf(salarioPessoa.getSalarioBase(), salarioPessoa.getQtdDependente()));
-        System.out.println("Salario Liquido a receber");
-        System.out.println(calculoSalarioService.retornaSalarioLiquido(salarioPessoa.getSalarioBase(), salarioPessoa.getQtdDependente()));
-        System.out.println("=====================================================");
-        System.out.println("FGTS 8%");
-        System.out.println(calculoSalarioService.retornaFgtsEmpregado(salarioPessoa.getSalarioBase()));
-        System.out.println("FGTS 0,5%");
-        System.out.println(calculoSalarioService.retornaFgtsGoverno(salarioPessoa.getSalarioBase()));
+        System.out.println("Salário Mês  : " + salarioPessoa.getSalarioBase());
+        System.out.println("Valor Extra 1: " + (calculoSalarioService.retornaHoraExtra(salarioPessoa.getSalarioBase(), salarioPessoa.getHorasMes(), salarioPessoa.getPercentual(), salarioPessoa.getQtdeHoraExtra())));
+
+        System.out.println("============== D E S C O N T O S ================");
+
+        System.out.println("Desconto INSS: " + (calculoSalarioService.retornaDescontoInss(salarioPessoa.getSalarioBase())));
+        System.out.println("Desconto IRRF: " + (calculoSalarioService.retornaDescontoIrrf(salarioPessoa.getSalarioBase(), salarioPessoa.getQtdDependente())));
+
+        System.out.println("========== SALÁRIO LÍQUIDO A RECEBER ============");
+
+        System.out.println("Liquido a Receber: " + (calculoSalarioService.retornaSalarioLiquido(salarioPessoa.getSalarioBase(), salarioPessoa.getQtdDependente())));
+
+        System.out.println("============= DEPÓSITOS DE FGTS =================");
+        System.out.println("FGTS 8%  : " + (calculoSalarioService.retornaFgtsEmpregado(salarioPessoa.getSalarioBase())));
+        System.out.println("FGTS 0,5%: " + (calculoSalarioService.retornaFgtsGoverno(salarioPessoa.getSalarioBase())));
+
     }
 }
