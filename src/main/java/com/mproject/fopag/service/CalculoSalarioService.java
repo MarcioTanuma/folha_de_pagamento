@@ -58,7 +58,7 @@ public class CalculoSalarioService {
         return salarioBase - (retornaDescontoInss(salarioBase) + retornaDescontoIrrf(salarioBase, qtdDependente));
     }
     public float retornaHoraExtra(float salarioBase, int horasMes, float percentual, float qtdeHoraExtra){
-        valorTotalHoraExtra = ((salarioBase / horasMes) * percentual) * qtdeHoraExtra;
+        valorTotalHoraExtra = ((salarioBase / 210) * (percentual + 1)) * qtdeHoraExtra;
         return valorTotalHoraExtra;
     }
 

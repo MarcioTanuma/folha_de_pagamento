@@ -27,8 +27,8 @@ public class CadastroMain {
         System.out.println("Quantidade de Dependentes: ");
         salarioPessoa.setQtdDependente(scanner.nextInt());
 
-        System.out.println("Quantidade de horas mês: ");
-        salarioPessoa.setHorasMes(scanner.nextInt());
+        // System.out.println("Quantidade de horas mês: ");
+        // salarioPessoa.setHorasMes(scanner.nextInt());
 
         System.out.println("Quantidade de horas extras 1: ");
         salarioPessoa.setQtdeHoraExtra(scanner.nextFloat());
